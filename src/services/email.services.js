@@ -22,7 +22,7 @@ export async function verifyEmail(firstName, lastName, userEmail, link) {
     await transporter.sendMail({
       from: process.env.EMAIL_TEST,
       to: userEmail,
-      subject: "Welcome to Post-It.  Email verification",
+      subject: "Welcome to Comic Bay.  Email verification",
       html: `<div>
                 Hello ${firstName} ${lastName}, Please verify your email by clicking this <a href="${link}">link</a>.
             </div>`,
@@ -39,8 +39,23 @@ export async function passwordChange(userEmail) {
       to: userEmail,
       subject: "Security Alert",
       html: `<div>
-                  <p>Hey Post-It User, you're getting this email because you just changed your password. If you didn't make this request. Contact Admin ASAP</p> 
+                  <p>Hey Comic Bay User , you're getting this email because you just changed your password. If you didn't make this request. Contact Admin ASAP</p> 
               </div>`,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function successfulPayment(reference) {
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_TEST,
+      to: userEmail,
+      subject: "Payment Successful",
+      html: `<div>
+               Hello comic lover, You are receiving this email because you just made a purchase, and it was successful. We look forward to making you our most valuable customer!
+            </div>`,
     });
   } catch (err) {
     console.log(err);

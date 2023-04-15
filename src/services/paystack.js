@@ -39,6 +39,7 @@
 // export { paystack };
 
 import axios from "axios";
+import { successfulPayment } from "./email.services.js";
 
 class PaystackPaymentService {
   constructor() {
